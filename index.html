@@ -924,6 +924,34 @@
         .modal-actions button {
             flex-grow: 1;
         }
+
+        /* Mobile Responsive Adjustments */
+        @media (max-width: 600px) {
+            .app-header {
+                flex-direction: column;
+                gap: 16px;
+            }
+            .header-controls {
+                justify-content: space-between;
+                width: 100%;
+            }
+            .stats-bar {
+                grid-template-columns: 1fr;
+            }
+            .grid-container {
+                gap: 8px;
+            }
+            .cell {
+                font-size: 1.4rem;
+                border-radius: 8px;
+            }
+            .action-bar {
+                flex-direction: column;
+            }
+            .victory-stats {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
