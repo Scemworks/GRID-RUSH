@@ -25,6 +25,8 @@
             --btn-primary-bg: linear-gradient(135deg, #00f0ff, #ff007f);
             --btn-primary-text: #000000;
             --btn-primary-hover-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+            --btn-3d-dark: #007a80;
+            --cell-3d-dark: #0a0a14;
             
             --blob-1-color: rgba(255, 0, 127, 0.45);
             --blob-2-color: rgba(0, 240, 255, 0.45);
@@ -47,6 +49,8 @@
             --btn-primary-bg: linear-gradient(135deg, #64ffda, #00b0ff);
             --btn-primary-text: #050505;
             --btn-primary-hover-shadow: 0 0 15px rgba(100, 255, 218, 0.5);
+            --btn-3d-dark: #00667a;
+            --cell-3d-dark: #020807;
             
             --blob-1-color: rgba(100, 255, 218, 0.4);
             --blob-2-color: rgba(0, 176, 255, 0.4);
@@ -69,6 +73,8 @@
             --btn-primary-bg: linear-gradient(135deg, #ff71ce, #01cdfe);
             --btn-primary-text: #000000;
             --btn-primary-hover-shadow: 0 0 15px rgba(255, 113, 206, 0.5);
+            --btn-3d-dark: #99447b;
+            --cell-3d-dark: #0b0216;
             
             --blob-1-color: rgba(255, 113, 206, 0.45);
             --blob-2-color: rgba(1, 205, 254, 0.45);
@@ -440,6 +446,7 @@
         .cell {
             background-color: var(--cell-bg);
             border: 1px solid var(--border-color);
+            border-bottom: 2px solid var(--border-color);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -451,23 +458,25 @@
             cursor: pointer;
             user-select: none;
             -webkit-user-select: none;
-            transition: transform 0.1s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 6px 0 var(--cell-3d-dark), 0 8px 15px rgba(0, 0, 0, 0.2);
             position: relative;
             transform-style: preserve-3d;
             backface-visibility: hidden;
             perspective: 1000px;
+            transform: translateY(0);
         }
 
         .cell:hover {
             border-color: var(--accent-1);
             background-color: var(--cell-hover);
-            box-shadow: 0 0 12px rgba(0, 240, 255, 0.25);
-            transform: scale(1.02);
+            box-shadow: 0 6px 0 var(--cell-3d-dark), 0 0 12px rgba(0, 240, 255, 0.25);
+            transform: translateY(-2px);
         }
 
         .cell:active {
-            transform: scale(0.95);
+            box-shadow: 0 0px 0 var(--cell-3d-dark), 0 2px 5px rgba(0, 0, 0, 0.4);
+            transform: translateY(6px);
         }
 
         /* Single element rotation flip for rush mode */
@@ -548,15 +557,18 @@
             background: var(--btn-primary-bg);
             border: none;
             color: var(--btn-primary-text);
+            box-shadow: 0 6px 0 var(--btn-3d-dark), 0 10px 20px rgba(0,0,0,0.3);
+            transform: translateY(0);
         }
 
         .primary-btn:hover {
-            box-shadow: var(--btn-primary-hover-shadow);
-            transform: translateY(-3px);
+            box-shadow: var(--btn-primary-hover-shadow), 0 6px 0 var(--btn-3d-dark);
+            transform: translateY(-2px);
         }
 
         .primary-btn:active {
-            transform: translateY(0);
+            box-shadow: 0 0px 0 var(--btn-3d-dark), 0 2px 5px rgba(0,0,0,0.5);
+            transform: translateY(6px);
         }
 
         .secondary-btn {
@@ -693,6 +705,24 @@
 
         .text-btn:hover {
             color: var(--accent-error);
+        }
+
+        .instructions-card {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 320px;
+            z-index: 100;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            border-color: var(--accent-1);
+        }
+
+        @media (max-width: 900px) {
+            .instructions-card {
+                position: static;
+                width: 100%;
+                margin-top: 24px;
+            }
         }
 
         .instructions-card ul {
