@@ -747,6 +747,13 @@
             color: var(--accent-1);
         }
 
+        .highlight-text {
+            color: var(--accent-1);
+            font-weight: 800;
+            text-shadow: 0 0 8px rgba(0, 240, 255, 0.3);
+            letter-spacing: 0.5px;
+        }
+
         /* Footer styling */
         .app-footer {
             text-align: center;
@@ -1026,9 +1033,9 @@
                     <div class="card instructions-card">
                         <h2>🎯 TRAINING RULES</h2>
                         <ul>
-                            <li>Click the grid tiles in sequential order starting from **1**.</li>
-                            <li>In **Classic Mode**, complete the run by clicking number **25**.</li>
-                            <li>In **Speed Rush Mode**, clicking a tile (1-25) spins it to reveal its counterpart (+25). Clear up to **50**.</li>
+                            <li>Click the grid tiles in sequential order starting from <span class="highlight-text">1</span>.</li>
+                            <li>In <span class="highlight-text">Classic Mode</span>, complete the run by clicking number <span class="highlight-text">25</span>.</li>
+                            <li>In <span class="highlight-text">Speed Rush Mode</span>, clicking a tile (1-25) spins it to reveal its counterpart (+25). Clear up to <span class="highlight-text">50</span>.</li>
                             <li>An incorrect tile click triggers a buzzer sound, screen shake, and a slight time penalty.</li>
                             <li>Try to keep your eyes fixed on the center of the grid and scan using peripheral vision.</li>
                         </ul>
